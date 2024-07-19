@@ -37,6 +37,6 @@ vim.opt.updatetime = 250 -- Decrease update time
 vim.opt.redrawtime = 10000 -- Allow more time for loading syntax on large files
 vim.opt.exrc = true
 vim.opt.secure = true
-vim.opt.signcolumn = 'yes:1'
+vim.opt.signcolumn = 'yes:2'
 vim.opt.titlestring = '%f // nvim'
 vim.opt.inccommand = 'split'
