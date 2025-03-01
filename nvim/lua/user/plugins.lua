@@ -260,6 +260,9 @@ use({
   end,
 })
 
+use({'jose-elias-alvarez/null-ls.nvim'})
+use({ 'MunifTanjim/prettier.nvim' })
+
 -- Language Server Protocol.
 use({
   'neovim/nvim-lspconfig',
@@ -274,6 +277,7 @@ use({
     require('user/plugins/lspconfig')
   end,
 })
+
 
 -- Completion
 use({
@@ -300,6 +304,81 @@ use({
       require("conform").setup()
     end,
   })
+
+-- PHP Refactoring Tools
+use({
+  'phpactor/phpactor',
+  ft = 'php',
+  run = 'composer install --no-dev --optimize-autoloader',
+  config = function()
+    vim.keymap.set('n', '<Leader>pm', ':PhpactorContextMenu<CR>')
+    vim.keymap.set('n', '<Leader>pn', ':PhpactorClassNew<CR>')
+  end,
+})
+
+-- Debugger
+use({'mfussenegger/nvim-dap'})
+use({
+  "rcarriga/nvim-dap-ui",
+  requires = {
+  "mfussenegger/nvim-dap",
+  "nvim-neotest/nvim-nio"
+  }
+})
+
+-- Project Configuration.
+use({
+  'tpope/vim-projectionist',
+  requires = 'tpope/vim-dispatch',
+  config = function()
+    require('user/plugins/projectionist')
+  end,
+})
+
+-- Testing helper
+use({
+  'vim-test/vim-test',
+  config = function()
+    require('user/plugins/vim-test')
+  end,
+})
+
+--codeuim
+-- use({
+--   'Exafunction/codeium.vim',
+--   config = function()
+--     require('user/plugins/codeium')
+--   end,
+-- })
+
+--copilot
+use({
+  'github/copilot.vim',
+  config = function()
+    require('user/plugins/copilot')
+  end,
+})
+
+--copilot chat
+use({
+    "CopilotC-Nvim/CopilotChat.nvim",
+    requires = {
+        "github/copilot.vim",
+        "nvim-lua/plenary.nvim",
+        "nvim-telescope/telescope.nvim"
+    },
+    config = function()
+        require("copilotChat").setup()
+    end
+})
+
+use({
+    "elentok/format-on-save.nvim",
+    config =  function()
+      require('user/plugins/format-on-save')
+    end,
+  })
+
 
 -- Automatically set up your configuration after cloning packer.nvim
 -- Put this at the end after all plugins

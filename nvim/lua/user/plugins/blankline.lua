@@ -8,7 +8,7 @@ require('ibl').setup({
         'lspinfo',
         'TelescopePrompt',
         'TelescopeResults',
-      }, 
+      },
       buftypes = {
           'terminal',
           'NvimTree',
